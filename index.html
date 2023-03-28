@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <link rel="icon" href="./images/atam.ico" type="image/x-icon">
+        <title>Ey Türk Gençliği !!</title>
+    </head>
+    <body>
+        <span id="AboutDevTypeText" class="typeing"></span><span class='blinker'>&#32;</span>
+        <style>
+            body {
+                background: black;
+            }
+
+            span {
+                color: rgb(255, 255, 255);
+                font-family: monospace;
+            }
+
+            .blinker {
+                opacity: 1;
+                margin-bottom: -2px;
+                height: 15px;
+                margin-left: -5px;
+                border-left: 7px solid yellow;
+                animation: blinker 0.9s steps(2, start) infinite;
+            }
+
+            @keyframes blinker {
+                to { 
+                    visibility: hidden; 
+                }
+            }
+
+        </style>
+        <script>
+            var data = [
+            {
+                AboutDevTypeText: "Ey Türk gençliği! Birinci vazifen; Türk istiklalini, Türk cumhuriyetini, ilelebet muhafaza ve müdafaa etmektir.Mevcudiyetinin ve istikbalinin yegâne temeli budur. Bu temel, senin en kıymetli hazinendir. İstikbalde dahi seni bu hazineden mahrum etmek isteyecek dâhilî ve haricî bedhahların olacaktır. Bir gün, istiklal ve cumhuriyeti müdafaa mecburiyetine düşersen, vazifeye atılmak için içinde bulunacağın vaziyetin imkân ve şeraitini düşünmeyeceksin. Bu imkân ve şerait, çok namüsait bir mahiyette tezahür edebilir. İstiklal ve cumhuriyetine kastedecek düşmanlar, bütün dünyada emsali görülmemiş bir galibiyetin mümessili olabilirler. Cebren ve hile ile aziz vatanın bütün kaleleri zapt edilmiş, bütün tersanelerine girilmiş, bütün orduları dağıtılmış ve memleketin her köşesi bilfiil işgal edilmiş olabilir. Bütün bu şeraitten daha elim ve daha vahim olmak üzere, memleketin dâhilinde iktidara sahip olanlar, gaflet ve dalalet ve hatta hıyanet içinde bulunabilirler. Hatta bu iktidar sahipleri, şahsi menfaatlerini müstevlilerin siyasi emelleriyle tevhit edebilirler. Millet, fakruzaruret içinde harap ve bitap düşmüş olabilir.Ey Türk istikbalinin evladı! İşte, bu ahval ve şerait içinde dahi vazifen, Türk istiklal ve cumhuriyetini kurtarmaktır. Muhtaç olduğun kudret, damarlarındaki asil kanda mevcuttur. ~ Mustafa Kemal Atatürk"
+            }
+            ];
+
+            var allElements = document.getElementsByClassName("typeing");
+            for (var j = 0; j < allElements.length; j++) {
+                var currentElementId = allElements[j].id;
+                var currentElementIdContent = data[0][currentElementId];
+                var element = document.getElementById(currentElementId);
+                var devTypeText = currentElementIdContent;
+
+            // type code
+            var i = 0, isTag, text;
+            (function type() {
+                text = devTypeText.slice(0, ++i);
+                if (text === devTypeText) return;
+                element.innerHTML = text + `<span class='blinker'>&#32;</span>`;
+                var char = text.slice(-1);
+                if (char === "<") isTag = true;
+                if (char === ">") isTag = false;
+                if (isTag) return type();
+                setTimeout(type, 60);
+            })();
+            }
+        </script>
+    </body>
+</html>
